@@ -261,23 +261,6 @@ function initServiceCards() {
   });
 }
 
-// ===== GALLERY IMAGE CLIP REVEAL =====
-function initGalleryReveals() {
-  document.querySelectorAll('.gallery__item').forEach(function(item) {
-    gsap.from(item, {
-      clipPath: 'inset(15% 0 15% 0)',
-      opacity: 0,
-      duration: 1.2,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: item,
-        start: 'top 85%',
-        toggleActions: 'play none none none'
-      }
-    });
-  });
-}
-
 // ===== QUOTE IMAGE REVEAL =====
 function initQuoteImageReveal() {
   var quoteImg = document.querySelector('.quote__image');
@@ -336,9 +319,18 @@ function initGalleryGrid() {
   if (!cols.length) return;
 
   // Duplicate each column's content for seamless infinite loop
-  cols.forEach(function(inner) {
+  // Then apply animations (must happen AFTER duplication so -50% is correct)
+  var animations = [
+    'galleryScrollUp 20s linear infinite',   // col 1
+    'galleryScrollDown 24s linear infinite',  // col 2
+    'galleryScrollUp 26s linear infinite',    // col 3
+    'galleryScrollDown 18s linear infinite',  // col 4
+    'galleryScrollUp 22s linear infinite'     // col 5
+  ];
+  cols.forEach(function(inner, i) {
     var original = inner.innerHTML;
     inner.innerHTML = original + original;
+    inner.style.animation = animations[i] || animations[0];
   });
 
   // Reveal the wall on scroll

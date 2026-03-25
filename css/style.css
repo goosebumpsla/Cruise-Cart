@@ -973,14 +973,7 @@ picture {
   gap: 0.5rem;
 }
 
-/* Scroll-up columns */
-.gallery__col--1 .gallery__col-inner { animation: galleryScrollUp 20s linear infinite; }
-.gallery__col--3 .gallery__col-inner { animation: galleryScrollUp 26s linear infinite; }
-.gallery__col--5 .gallery__col-inner { animation: galleryScrollUp 22s linear infinite; }
-
-/* Scroll-down columns */
-.gallery__col--2 .gallery__col-inner { animation: galleryScrollDown 24s linear infinite; }
-.gallery__col--4 .gallery__col-inner { animation: galleryScrollDown 18s linear infinite; }
+/* Animations applied via JS after content duplication — see initGalleryGrid() */
 
 @keyframes galleryScrollUp {
   0% { transform: translateY(0); }
