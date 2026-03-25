@@ -8,6 +8,25 @@ function initForm() {
   var successEl = document.getElementById('quoteSuccess');
   if (!form) return;
 
+  // Pricing card → auto-select service in quote form
+  document.querySelectorAll('[data-select-service]').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      var serviceVal = btn.getAttribute('data-select-service');
+      var serviceSelect = document.getElementById('service');
+      if (serviceSelect) {
+        serviceSelect.value = serviceVal;
+        // Trigger label float
+        serviceSelect.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+      // Brief highlight on the service field
+      var group = serviceSelect.closest('.form-group');
+      if (group && typeof gsap !== 'undefined') {
+        gsap.fromTo(group, { boxShadow: '0 0 0 2px var(--color-accent)' },
+          { boxShadow: '0 0 0 0px var(--color-accent)', duration: 1.5, ease: 'power2.out' });
+      }
+    });
+  });
+
   form.addEventListener('submit', function(e) {
     e.preventDefault();
 
