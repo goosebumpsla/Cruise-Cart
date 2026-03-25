@@ -727,19 +727,14 @@ picture {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  max-width: var(--container-max);
+  max-width: 900px;
   margin: 0 auto 3.5rem;
 }
 
 @media (min-width: 640px) {
   .pricing__grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .pricing__grid {
-    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
   }
 }
 
@@ -747,8 +742,8 @@ picture {
   position: relative;
   background: var(--color-bg-cream);
   border: 1px solid var(--color-border);
-  border-radius: 6px;
-  padding: 2rem 1.5rem;
+  border-radius: 8px;
+  padding: 2.5rem 2rem;
   display: flex;
   flex-direction: column;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast);
@@ -761,6 +756,7 @@ picture {
 
 .pricing-card--featured {
   border-color: var(--color-accent);
+  border-width: 2px;
   background: var(--color-bg);
 }
 
@@ -850,9 +846,19 @@ picture {
   color: var(--color-text-inverse);
 }
 
+.pricing-card--featured .pricing-card__cta {
+  background: var(--color-text-primary);
+  color: var(--color-text-inverse);
+}
+
+.pricing-card--featured .pricing-card__cta:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
 /* Add-ons */
 .pricing__addons {
-  max-width: 800px;
+  max-width: 900px;
   margin: 0 auto;
   text-align: center;
 }
@@ -868,7 +874,7 @@ picture {
 .pricing__addons-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 @media (min-width: 640px) {
@@ -881,20 +887,21 @@ picture {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 1rem;
+  padding: 1rem 1.25rem;
   background: var(--color-bg-cream);
-  border-radius: 4px;
-  gap: 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  gap: 0.75rem;
 }
 
 .addon__name {
-  font-size: var(--font-small);
+  font-size: var(--font-body);
   color: var(--color-text-body);
 }
 
 .addon__price {
-  font-size: var(--font-small);
-  font-weight: 500;
+  font-size: var(--font-body);
+  font-weight: 600;
   color: var(--color-accent);
   white-space: nowrap;
 }
@@ -1004,6 +1011,51 @@ picture {
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+
+/* ===== SOCIAL / INSTAGRAM ===== */
+.social {
+  background: var(--color-bg-cream);
+  overflow: hidden;
+}
+
+.social__subtext {
+  text-align: center;
+  font-size: var(--font-body);
+  color: var(--color-text-muted);
+  max-width: 500px;
+  margin: -1.5rem auto 3rem;
+}
+
+.social__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  justify-items: center;
+}
+
+@media (min-width: 640px) {
+  .social__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.social__embed {
+  width: 100%;
+  max-width: 400px;
+}
+
+.social__embed .instagram-media {
+  margin: 0 !important;
+  width: 100% !important;
+  min-width: unset !important;
+}
+
+.social__cta {
+  text-align: center;
+  margin-top: 1rem;
 }
 
 /* ===== HOW IT WORKS ===== */
@@ -1487,18 +1539,35 @@ picture {
   }
 
   /* Services cards */
+  .services__grid {
+    gap: 0.75rem;
+  }
+
   .service-card {
     aspect-ratio: 4 / 3;
   }
 
-  /* Gallery */
-  .gallery__layout {
-    gap: 1rem;
-    margin-bottom: 1rem;
+  /* Pricing mobile */
+  .pricing__subtext {
+    margin-bottom: 2rem;
   }
 
-  .gallery__item--small {
-    margin-top: 0;
+  .pricing-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .pricing__addons-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Social/Instagram mobile */
+  .social__grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .social__subtext {
+    margin-bottom: 2rem;
   }
 
   /* Steps */
@@ -1526,7 +1595,9 @@ picture {
   }
 
   .quote__image {
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 4 / 3;
+    max-width: 70%;
+    margin: 0 auto;
   }
 
   .quote__heading {
