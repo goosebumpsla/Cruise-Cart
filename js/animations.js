@@ -78,7 +78,7 @@ function initMagneticButtons() {
 
 // ===== HERO ENTRANCE ANIMATION =====
 function initHeroAnimation() {
-  var tl = gsap.timeline({ delay: 0.2 });
+  var tl = gsap.timeline({ delay: 0.1 });
 
   // Image scale down
   tl.to('.hero__img', {
@@ -361,9 +361,6 @@ function initGalleryGrid() {
 function initAnimations() {
   gsap.registerPlugin(ScrollTrigger);
 
-  // Signal CSS that animations are ready — enables initial hidden states
-  document.body.classList.add('animations-ready');
-
   // Each init wrapped in try/catch to prevent cascade failures
   var inits = [
     ['Hero', initHeroAnimation],
@@ -373,7 +370,6 @@ function initAnimations() {
     ['Connectors', initConnectors],
     ['NavScroll', initNavScroll],
     ['ServiceCards', initServiceCards],
-    ['GalleryReveals', initGalleryReveals],
     ['QuoteImage', initQuoteImageReveal],
     ['Showcase', initShowcase],
     ['MagneticButtons', initMagneticButtons],

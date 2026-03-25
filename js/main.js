@@ -22,6 +22,10 @@
 
     gsap.registerPlugin(ScrollTrigger);
 
+    // Add animations-ready class early (while loader covers the page)
+    // so elements start hidden — no visible jump when loader exits
+    document.body.classList.add('animations-ready');
+
     var loader = document.getElementById('loader');
     var loaderText = loader ? loader.querySelector('.loader__text') : null;
 
@@ -30,22 +34,22 @@
       return;
     }
 
-    // Loader animation
+    // Loader animation — smooth and unhurried
     var tl = gsap.timeline();
     tl.to(loaderText, {
       opacity: 1,
-      duration: 0.6,
+      duration: 0.8,
       ease: 'power2.out'
     });
     tl.to(loaderText, {
       opacity: 0,
-      duration: 0.4,
+      duration: 0.5,
       ease: 'power2.in'
-    }, '+=0.4');
+    }, '+=0.5');
     tl.to(loader, {
       yPercent: -100,
-      duration: 0.8,
-      ease: 'power3.inOut',
+      duration: 1,
+      ease: 'power4.inOut',
       onComplete: function() {
         loader.style.display = 'none';
         startApp();
