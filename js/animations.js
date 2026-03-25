@@ -330,24 +330,31 @@ function initShowcase() {
   }
 }
 
-// ===== GALLERY GRID REVEAL =====
+// ===== GALLERY WALL (duplicate content for infinite scroll) =====
 function initGalleryGrid() {
-  var items = document.querySelectorAll('.gallery__item');
-  if (!items.length) return;
+  var cols = document.querySelectorAll('.gallery__col-inner');
+  if (!cols.length) return;
 
-  items.forEach(function(item) {
-    gsap.from(item, {
+  // Duplicate each column's content for seamless infinite loop
+  cols.forEach(function(inner) {
+    var original = inner.innerHTML;
+    inner.innerHTML = original + original;
+  });
+
+  // Reveal the wall on scroll
+  var wall = document.querySelector('.gallery__wall');
+  if (wall) {
+    gsap.from(wall, {
       opacity: 0,
-      y: 40,
-      duration: 0.8,
-      ease: 'power3.out',
+      duration: 1,
+      ease: 'power2.out',
       scrollTrigger: {
-        trigger: item,
-        start: 'top 90%',
+        trigger: wall,
+        start: 'top 85%',
         toggleActions: 'play none none none'
       }
     });
-  });
+  }
 }
 
 // ===== INIT ALL ANIMATIONS =====

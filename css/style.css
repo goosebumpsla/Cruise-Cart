@@ -906,12 +906,18 @@ picture {
   white-space: nowrap;
 }
 
-/* ===== GALLERY (unified grid + Instagram) ===== */
+/* ===== GALLERY (5-column auto-scroll wall) ===== */
 .gallery {
   background: var(--color-bg);
   overflow: hidden;
-  padding-left: clamp(0.5rem, 1.5vw, 1rem);
-  padding-right: clamp(0.5rem, 1.5vw, 1rem);
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.gallery__heading,
+.gallery__subtext {
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
 }
 
 .gallery__subtext {
@@ -922,25 +928,83 @@ picture {
   margin: -1.5rem auto 3rem;
 }
 
-.gallery__grid {
+/* Wall container */
+.gallery__wall {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
-  max-width: 100%;
-  margin: 0 auto 3rem;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+  height: 70vh;
+  min-height: 500px;
+  max-height: 800px;
+  overflow: hidden;
+  margin-bottom: 3rem;
 }
 
+/* Each column */
+.gallery__col {
+  overflow: hidden;
+  position: relative;
+}
+
+/* Fade edges top and bottom */
+.gallery__col::before,
+.gallery__col::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 60px;
+  z-index: 2;
+  pointer-events: none;
+}
+.gallery__col::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--color-bg), transparent);
+}
+.gallery__col::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--color-bg), transparent);
+}
+
+/* Inner scrolling track — duplicated content for seamless loop */
+.gallery__col-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Scroll-up columns */
+.gallery__col--1 .gallery__col-inner { animation: galleryScrollUp 20s linear infinite; }
+.gallery__col--3 .gallery__col-inner { animation: galleryScrollUp 26s linear infinite; }
+.gallery__col--5 .gallery__col-inner { animation: galleryScrollUp 22s linear infinite; }
+
+/* Scroll-down columns */
+.gallery__col--2 .gallery__col-inner { animation: galleryScrollDown 24s linear infinite; }
+.gallery__col--4 .gallery__col-inner { animation: galleryScrollDown 18s linear infinite; }
+
+@keyframes galleryScrollUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+@keyframes galleryScrollDown {
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
+
+/* Pause on hover */
+.gallery__wall:hover .gallery__col-inner {
+  animation-play-state: paused;
+}
+
+/* Items */
 .gallery__item {
   position: relative;
   display: block;
-  aspect-ratio: 1;
+  aspect-ratio: 3 / 4;
   overflow: hidden;
   border-radius: 6px;
-}
-
-.gallery__item--tall {
-  grid-row: span 2;
-  aspect-ratio: auto;
+  flex-shrink: 0;
 }
 
 .gallery__item img {
@@ -1012,16 +1076,20 @@ picture {
 .gallery__cta {
   text-align: center;
   margin-top: 1rem;
+  padding: 0 var(--container-padding);
 }
 
 /* Gallery responsive */
 @media (max-width: 768px) {
-  .gallery__grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.5rem;
+  .gallery__wall {
+    grid-template-columns: repeat(3, 1fr);
+    height: 55vh;
+    min-height: 400px;
   }
-  .gallery__item--tall {
-    grid-row: span 2;
+  /* Hide columns 4 and 5 on mobile */
+  .gallery__col--4,
+  .gallery__col--5 {
+    display: none;
   }
   .gallery__subtext {
     margin-bottom: 2rem;
