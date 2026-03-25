@@ -30,8 +30,8 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
   <!-- Preload hero image -->
-  <link rel="preload" as="image" href="images/hero/hero-desktop.webp" type="image/webp" media="(min-width: 769px)">
-  <link rel="preload" as="image" href="images/hero/hero-mobile.webp" type="image/webp" media="(max-width: 768px)">
+  <link rel="preload" as="image" href="images/hero/hero-desktop.jpg" type="image/jpeg" media="(min-width: 769px)">
+  <link rel="preload" as="image" href="images/hero/hero-mobile.jpg" type="image/jpeg" media="(max-width: 768px)">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -71,10 +71,10 @@
       "@type": "OfferCatalog",
       "name": "Mobile Bartending Services",
       "itemListElement": [
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "White Bar Set Up with Bartender"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Mobile Tap Truck with Bartender"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Coffee Pop Up Catering"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "White Bar Rental"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "White Bar Set Up with Bartender"}, "price": "500", "priceCurrency": "USD"},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Mobile Tap Truck with Bartender"}, "price": "500", "priceCurrency": "USD"},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Coffee Pop Up Catering"}, "price": "250", "priceCurrency": "USD"},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "White Bar Rental"}, "price": "200", "priceCurrency": "USD"},
         {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Event Bartending Service DFW"}}
       ]
     }
@@ -94,8 +94,8 @@
     <nav class="nav__links" id="navLinks">
       <a href="#about" class="nav__link">About</a>
       <a href="#services" class="nav__link">Services</a>
+      <a href="#pricing" class="nav__link">Pricing</a>
       <a href="#gallery" class="nav__link">Gallery</a>
-      <a href="#how-it-works" class="nav__link">How It Works</a>
       <a href="#quote" class="nav__cta">Request a Quote</a>
     </nav>
     <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
@@ -109,9 +109,9 @@
     <nav class="mobile-menu__nav">
       <a href="#about" class="mobile-menu__link">About</a>
       <a href="#services" class="mobile-menu__link">Services</a>
+      <a href="#pricing" class="mobile-menu__link">Pricing</a>
       <a href="#gallery" class="mobile-menu__link">Gallery</a>
       <a href="#how-it-works" class="mobile-menu__link">How It Works</a>
-      <a href="#testimonials" class="mobile-menu__link">Testimonials</a>
       <a href="#quote" class="mobile-menu__link mobile-menu__cta">Request a Quote</a>
     </nav>
   </div>
@@ -121,9 +121,8 @@
     <section class="hero" id="hero" aria-label="Hero">
       <div class="hero__bg">
         <picture>
-          <source srcset="images/hero/hero-desktop.webp" type="image/webp" media="(min-width: 769px)">
-          <source srcset="images/hero/hero-mobile.webp" type="image/webp" media="(max-width: 768px)">
-          <img src="images/hero/hero-desktop.jpg" alt="Cruise Cart mobile bar setup at an outdoor event in the DFW area" width="1920" height="1280" fetchpriority="high" decoding="async" class="hero__img">
+          <source srcset="images/hero/hero-mobile.jpg" media="(max-width: 768px)">
+          <img src="images/hero/hero-desktop.jpg" alt="Cruise Cart mobile tap truck at an outdoor event in the DFW area" width="1920" height="1280" fetchpriority="high" decoding="async" class="hero__img">
         </picture>
         <div class="hero__overlay"></div>
       </div>
@@ -224,6 +223,108 @@
             <span class="service-card__label">Bar Rental</span>
           </div>
         </a>
+      </div>
+    </section>
+
+    <!-- ===== PRICING ===== -->
+    <section class="pricing section" id="pricing" aria-label="Pricing">
+      <h2 class="pricing__heading section__heading" data-split="lines">Packages &amp; Pricing</h2>
+      <p class="pricing__subtext" data-reveal>Transparent pricing for every celebration. All packages are customizable to fit your event.</p>
+
+      <div class="pricing__grid">
+        <div class="pricing-card" data-reveal>
+          <div class="pricing-card__header">
+            <h3 class="pricing-card__title">White Bar Set Up</h3>
+            <span class="pricing-card__price">from $500</span>
+          </div>
+          <ul class="pricing-card__features">
+            <li>Mobile white bar + bartender</li>
+            <li>Cups (12oz &amp; 1oz), napkins, straws</li>
+            <li>Basic garnishes, tajin &amp; chamoy rims</li>
+            <li>Customized drink menu</li>
+            <li>Personalized shopping list for mixers, alcohol &amp; ice</li>
+            <li>Dry hire bar</li>
+          </ul>
+          <a href="#quote" class="pricing-card__cta">Request a Quote</a>
+        </div>
+
+        <div class="pricing-card pricing-card--featured" data-reveal>
+          <div class="pricing-card__badge">Most Popular</div>
+          <div class="pricing-card__header">
+            <h3 class="pricing-card__title">Mobile Tap Truck</h3>
+            <span class="pricing-card__price">from $500</span>
+          </div>
+          <ul class="pricing-card__features">
+            <li>Mobile tap truck + bartender + white bar</li>
+            <li>Cups (12oz &amp; 1oz), napkins, straws</li>
+            <li>Basic garnishes, 1-2 large coolers</li>
+            <li>Tajin, chamoy &amp; salt rims</li>
+            <li>Customized drink menu</li>
+            <li>Personalized shopping list for mixers, alcohol &amp; ice</li>
+            <li>Dry hire bar</li>
+          </ul>
+          <a href="#quote" class="pricing-card__cta">Request a Quote</a>
+        </div>
+
+        <div class="pricing-card" data-reveal>
+          <div class="pricing-card__header">
+            <h3 class="pricing-card__title">Coffee Pop Up</h3>
+            <span class="pricing-card__price">from $250</span>
+          </div>
+          <ul class="pricing-card__features">
+            <li>2 hour minimum</li>
+            <li>White bar cart + 2 baristas</li>
+            <li>Lattes (espresso shots) &amp; syrups</li>
+            <li>12oz cups, ice, napkins, straws</li>
+            <li>Customized drink menu print out</li>
+            <li>Travel within 30 mi included</li>
+          </ul>
+          <a href="#quote" class="pricing-card__cta">Request a Quote</a>
+        </div>
+
+        <div class="pricing-card" data-reveal>
+          <div class="pricing-card__header">
+            <h3 class="pricing-card__title">White Bar Rental</h3>
+            <span class="pricing-card__price">$200</span>
+          </div>
+          <ul class="pricing-card__features">
+            <li>Basic white bar (3ft &times; 2ft)</li>
+            <li>Drop off &amp; pick up included</li>
+            <li>Perfect for DIY setups</li>
+          </ul>
+          <a href="#quote" class="pricing-card__cta">Request a Quote</a>
+        </div>
+      </div>
+
+      <!-- Add-ons -->
+      <div class="pricing__addons" data-reveal>
+        <h3 class="pricing__addons-heading">Add-ons</h3>
+        <div class="pricing__addons-grid">
+          <div class="addon">
+            <span class="addon__name">Basic Mixer Package</span>
+            <span class="addon__price">from $100</span>
+          </div>
+          <div class="addon">
+            <span class="addon__name">Ice</span>
+            <span class="addon__price">$50</span>
+          </div>
+          <div class="addon">
+            <span class="addon__name">Elaborate Garnishes</span>
+            <span class="addon__price">$50</span>
+          </div>
+          <div class="addon">
+            <span class="addon__name">Water Station</span>
+            <span class="addon__price">$50</span>
+          </div>
+          <div class="addon">
+            <span class="addon__name">Matcha Bar</span>
+            <span class="addon__price">$45</span>
+          </div>
+          <div class="addon">
+            <span class="addon__name">Custom Stickers (100ct)</span>
+            <span class="addon__price">$35</span>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -508,8 +609,8 @@
       <div class="footer__links">
         <h4 class="footer__heading">Links</h4>
         <a href="#services" class="footer__link">Services</a>
+        <a href="#pricing" class="footer__link">Pricing</a>
         <a href="#gallery" class="footer__link">Gallery</a>
-        <a href="#how-it-works" class="footer__link">How It Works</a>
         <a href="#quote" class="footer__link">Request a Quote</a>
       </div>
       <div class="footer__contact">
