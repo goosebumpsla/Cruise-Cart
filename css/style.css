@@ -142,7 +142,7 @@ picture {
 
 .nav__logo {
   font-family: var(--font-script);
-  font-size: clamp(1.25rem, 2vw, 1.6rem);
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
   font-weight: 400;
   color: var(--color-text-inverse);
   transition: color var(--transition-fast);
@@ -703,9 +703,9 @@ picture {
 
 .service-card__label {
   font-family: var(--font-sans);
-  font-size: var(--font-small);
+  font-size: var(--font-body);
   font-weight: 500;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--color-text-inverse);
 }
@@ -785,7 +785,7 @@ picture {
 
 .pricing-card__title {
   font-family: var(--font-serif);
-  font-size: var(--font-h3);
+  font-size: var(--font-h2);
   font-weight: 500;
   color: var(--color-text-primary);
   margin-bottom: 0.5rem;
@@ -808,9 +808,9 @@ picture {
 }
 
 .pricing-card__features li {
-  font-size: var(--font-small);
+  font-size: var(--font-body);
   color: var(--color-text-body);
-  line-height: 1.5;
+  line-height: 1.6;
   padding-left: 1.25rem;
   position: relative;
 }
@@ -1029,28 +1029,69 @@ picture {
 
 .social__grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
   max-width: 900px;
   margin: 0 auto 3rem;
-  justify-items: center;
 }
 
 @media (min-width: 640px) {
   .social__grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
   }
 }
 
-.social__embed {
-  width: 100%;
-  max-width: 400px;
+.social__card {
+  position: relative;
+  display: block;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 6px;
 }
 
-.social__embed .instagram-media {
-  margin: 0 !important;
-  width: 100% !important;
-  min-width: unset !important;
+.social__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.social__card:hover img {
+  transform: scale(1.06);
+}
+
+.social__play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.social__play svg {
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+}
+
+.social__badge {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  pointer-events: none;
 }
 
 .social__cta {
@@ -1434,21 +1475,21 @@ picture {
 
 .footer__logo {
   font-family: var(--font-script);
-  font-size: clamp(1.5rem, 2.5vw, 1.85rem);
+  font-size: clamp(2rem, 3.5vw, 2.5rem);
   font-weight: 400;
   display: block;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .footer__tagline {
-  font-size: var(--font-small);
+  font-size: var(--font-body);
   color: rgba(253, 252, 250, 0.6);
   line-height: 1.6;
 }
 
 .footer__heading {
   font-family: var(--font-sans);
-  font-size: var(--font-label);
+  font-size: var(--font-small);
   font-weight: 500;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -1458,9 +1499,9 @@ picture {
 
 .footer__link {
   display: block;
-  font-size: var(--font-small);
+  font-size: var(--font-body);
   color: rgba(253, 252, 250, 0.7);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.65rem;
   transition: color var(--transition-fast);
 }
 
