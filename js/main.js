@@ -96,13 +96,6 @@
       console.error('[CruiseCart] Animations init failed:', e);
     }
 
-    // ===== INIT FORM =====
-    try {
-      initForm();
-    } catch(e) {
-      console.error('[CruiseCart] Form init failed:', e);
-    }
-
     // ===== INIT TESTIMONIALS =====
     try {
       initTestimonials();
